@@ -7,10 +7,11 @@ This uses the ‘haversine’ formula to calculate the great-circle distance bet
 - Searching Cabs within 10kms from a passengers location
 
 ## Haversine formula:
-
+```
 	a = sin²(Δφ/2) + cos φ1 ⋅ cos φ2 ⋅ sin²(Δλ/2)
     c = 2 ⋅ atan2( √a, √(1−a) )
     d = R ⋅ c
+```
 
     If atan2 is not available, c could be calculated from 2 ⋅ asin( min(1, √a) ) (including protec­tion against rounding errors).
 
@@ -21,6 +22,7 @@ Note that angles need to be in radians to pass to trig functions!
 
 ### JavaScript:
 
+```js
 const R = 6371e3; // metres
 const φ1 = lat1 * Math.PI/180; // φ, λ in radians
 const φ2 = lat2 * Math.PI/180;
@@ -31,6 +33,7 @@ const a = Math.sin(Δφ/2) * Math.sin(Δφ/2) + Math.cos(φ1) * Math.cos(φ2) * 
 const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
 const d = R * c; // in metres
+```
 
 Where, c is angular distance in radians
        a is square of half the chord length between the points.
@@ -38,6 +41,7 @@ Where, c is angular distance in radians
 
 ### Python :
 
+```python
 def distance (origin, destination):
 
        lat1, lon1 = origin
@@ -57,3 +61,4 @@ origin = (41.1792,73.1894)    # Bridgeport CT USA
 destination = (41.0772, 73.4687)  # Darien CT USA
 
 print("Distance in KM : {} ".format(distance(origin, destination)))
+```
